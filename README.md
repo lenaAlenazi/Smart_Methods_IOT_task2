@@ -4,7 +4,11 @@ This repository contains all the required tasks of week 3 in IOT / Smart Methods
 
 ## TASK 1 :
  ### Programming a web page to control the arms using web series API 
+ ![Screenshot (144)](https://user-images.githubusercontent.com/73249883/181264832-a196e388-5d0c-40b7-a3af-3c18828d9b3f.png)
+
 ## TASK 2 : 
 ### Writing arduino code related to the controller.
+![Screenshot (143)](https://user-images.githubusercontent.com/73249883/181265125-0e3ca11e-0990-4f9f-8df6-31d83c0847ca.png)
+
 ## Synopsis : 
 we need to control the Arm using the same speech to text website we did in the previous mission to be able to control and communicate with the Arduino, we should use the serial port to use it we should use the website : [Web Serial API](https://web.dev/serial/)
