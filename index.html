@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to text</title>
+<link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Speech to Text</h1>
+            <textarea style="text-align: right;"; id="output" name="output" rows="10" cols="30" placeholder=" Please speak...."></textarea>
+            <select name="language_Rec" id="language_Rec">
+                <option value="ar">Arabic</option>
+                <option value="en">English</option>
+            </select>
+              <p><br>
+            <button id="start" name="start" onclick="onConnectUsb()" id="connect-usb">Start Recording</button>
+            <button  id="stop" name="stop">Stop Recording</button>
+            <p><br>
+            <button onclick="onConnectUsb()" id="connect-usb"> Connect to Serial port </button>
+
+        </div>
+
+ <script src="script.js"></script>
+
+</body>
+</html>
