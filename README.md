@@ -4,7 +4,8 @@ This repository contains all the required tasks of week 3 in IOT / Smart Methods
 
 ## TASK 1 :
  ### Programming a web page to control the arms using web series API 
- ![Screenshot (144)](https://user-images.githubusercontent.com/73249883/181264832-a196e388-5d0c-40b7-a3af-3c18828d9b3f.png)
+![Screenshot (150)](https://user-images.githubusercontent.com/73249883/181791882-dd80a5b0-6a44-4f99-9264-ee83265584cb.png)
+
 
 ## TASK 2 : 
 ### Writing arduino code related to the controller.
