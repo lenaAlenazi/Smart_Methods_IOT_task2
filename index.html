@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="us">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">
+            Control Servo Using Speech
+        </h1>
+
+        <div class="form-group">
+            <textarea id="output-text" rows="4" class="form-control"> </textarea>
+        </div>
+        <div class="form-group">
+            <button id="start"> Start </button>
+            <button id="stop" > Stop </button>
+        </div>
+
+        <br>
+
+        <div class="language">
+
+            <input id="en" type="radio" name="lang" value="English" checked>
+            <label  class="xx" for="lang">English</label>
+
+            <input   id="ar" type="radio" name="lang" value="Arabic">
+            <label   class="xx"for="lang">Arabic</label>
+        </div>
+
+  </div>
+    </div>
+</body>
+
+<script>
+
+    var speechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
+    var recognition = new speechRecognition();
+    recognition.lang = "ar-sa"
+    var textbox = document.getElementById("output-text");
+    var startBtn = document.getElementById("start");
+    var stopBtn = document.getElementById("stop");
+    var content = "";
+    var port;
+
+    startBtn.addEventListener("click", async function () {
+
+        if (document.getElementById('ar').checked) {
+            recognition.lang = "ar-sa";
+            document.getElementById("output-text").style.direction = "rtl";
+        } else if (document.getElementById('en').checked) {
+            recognition.lang = "en-US";
+            document.getElementById("output-text").style.direction = "ltr";
+        }
+        console.log(recognition.lang);
+
+        port = await navigator.serial.requestPort({});
+        await port.open({ baudRate: 9600 });
+
+        textbox.textContent = " ";
+        action.textContent = "We are listening :)";
+        recognition.start();
+
+    });
+
+    stopBtn.addEventListener("click", async function () {
+        action.textContent = "We are NOT listening";
+
+    });
+
+    recognition.onspeechend = function () {
+        action.textContent = "We are NOT listening";
+        recognition.stop();
+    }
+
+    recognition.onresult = function (event) {
+        var result = event.results[0][0].transcript;
+        textbox.textContent = result;
+        commandAnalayzer(textbox.textContent);
+    }
+
+
+    async function commandAnalayzer(text) {
+
+        const textEncoder = new TextEncoderStream();
+        const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        const writer = textEncoder.writable.getWriter();
+
+
+        console.log(text);
+
+        if (text.includes("يمين") || text.includes("right")) {
+            await writer.write("right");
+        }
+        else if (text.includes("يسار") || text.includes("left")) {
+            await writer.write("left");
+        }
+
+        writer.releaseLock();
+
+
+    }
+
+</script>
+
+</html>
