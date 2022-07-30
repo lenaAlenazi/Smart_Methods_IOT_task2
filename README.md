@@ -13,3 +13,8 @@ This repository contains all the required tasks of week 3 in IOT / Smart Methods
 
 ## Synopsis : 
 we need to control the Arm using the same speech to text website we did in the previous mission to be able to control and communicate with the Arduino, we should use the serial port to use it we should use the website : [Web Serial API](https://web.dev/serial/)
+## Learning references:
+1. [Web Serial API](https://makeabilitylab.github.io/physcomp/communication/web-serial.html#the-web-serial-api)
+2. [Read from and write to a serial port](https://web.dev/serial/)
+3. [ Control Servo motor angle Serial Monitor](https://create.arduino.cc/projecthub/Hack-star-Arduino/arduino-simulator-control-servo-motor-angle-serial-monitor-35cf80)
+4. [Move servo motor by voice recognition](https://www.hackster.io/obniz/move-servo-motor-by-voice-recognition-bf95b2)
