@@ -32,7 +32,7 @@
             <label  class="xx" for="lang">English</label>
 
             <input   id="ar" type="radio" name="lang" value="Arabic">
-            <label   class="xx"for="lang">Arabic</label>
+            <label   class="xx" for="lang">Arabic</label>
         </div>
 
   </div>
@@ -47,6 +47,7 @@
     var textbox = document.getElementById("output-text");
     var startBtn = document.getElementById("start");
     var stopBtn = document.getElementById("stop");
+    var action = document.getElementById("action");
     var content = "";
     var port;
 
@@ -60,10 +61,10 @@
             document.getElementById("output-text").style.direction = "ltr";
         }
         console.log(recognition.lang);
-
+        // Prompt user to select any serial port.
         port = await navigator.serial.requestPort({});
+         // Wait for the serial port to open.
         await port.open({ baudRate: 9600 });
-
         textbox.textContent = " ";
         action.textContent = "We are listening :)";
         recognition.start();
@@ -91,6 +92,7 @@
 
         const textEncoder = new TextEncoderStream();
         const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+        
         const writer = textEncoder.writable.getWriter();
 
 
@@ -102,7 +104,7 @@
         else if (text.includes("يسار") || text.includes("left")) {
             await writer.write("left");
         }
-
+// Allow the serial port to be closed later.
         writer.releaseLock();
 
 
